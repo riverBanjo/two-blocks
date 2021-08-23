@@ -21,11 +21,8 @@ import { useBlockProps } from '@wordpress/block-editor';
  * @see https://developer.wordpress.org/block-editor/developers/block-api/block-edit-save/#save
  *
  * @return {WPElement} Element to render.
+ * reallyUnique
  */
-export default function save() {
-	return (
-		<p {...useBlockProps.save()}>
-			{__('Image Slider – hello from the saved content!', 'two-blocks')}
-		</p>
-	);
+export default function save( { attributes } ) {
+	return <div { ...useBlockProps.save() }>{ attributes.searchTerm}{ attributes.imageQuantity }</div>;
 }

@@ -2,7 +2,19 @@
 	"apiVersion": 2,
 	"name": "rcf/two-blocks",
 	"version": "1.0.0",
-	"title": "Image Slider",
+	"title": "Image Slider","attributes": {
+		"searchTerm": {
+			"type": "string",
+			"source": "text",
+			"selector": "div.search",
+			"default": ""
+		},
+		"imageQuantity": {
+			"type": "string",
+			"source": "text",
+			"selector": "div.quantity"
+		}
+	},
 	"category": "design",
 	"icon": "format-gallery",
 	"description": "This is a WordPress plugin that will only contain 2 Gutenberg blocks. One will have an image slider and the other will display posts.",

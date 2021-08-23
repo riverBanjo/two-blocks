@@ -14,6 +14,12 @@ import { __ } from '@wordpress/i18n';
 import { useBlockProps } from '@wordpress/block-editor';
 
 /**
+ * 
+ */
+ import { TextControl } from '@wordpress/components';
+ import { SelectControl } from '@wordpress/components';
+
+/**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
  *
@@ -29,10 +35,25 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
+export default function Edit( { attributes, setAttributes } ) {
 	return (
-		<p {...useBlockProps()}>
-			{__('Image Slider – hello from the editor!', 'two-blocks')}
-		</p>
+		<div { ...useBlockProps() }>
+			<TextControl
+                label={ __( 'Search Term', 'two-blocks' ) }
+                value={ attributes.searchTerm }
+                onChange={ ( searchVal ) => setAttributes( { searchTerm: searchVal } ) }
+            />
+			<SelectControl
+				label={ __( 'Image Quantity', 'two-blocks' ) }
+				value={ attributes.imageQuantity }
+				options={ [
+					{ label: '3', value: '3' },
+					{ label: '4', value: '4' },
+					{ label: '5', value: '5' },
+					{ label: '6', value: '6' }
+				] }
+				onChange={ ( quantityVal ) => setAttributes( { imageQuantity: quantityVal } ) }
+			/>
+		</div>
 	);
 }

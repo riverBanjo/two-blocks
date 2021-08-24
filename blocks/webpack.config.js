@@ -8,6 +8,10 @@ module.exports          =   {
         filename:           'bundle.js',
     },
     mode:                   'development',
+    externals: {
+        'react': 'React',
+        'react-dom': 'ReactDOM',
+      },
     watch:                  true,
     devtool:                'cheap-eval-source-map',
     module: {

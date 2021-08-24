@@ -1,1 +1,2 @@
-console.log( 'Hello World' );
+//main file
+import './img-slider-block';

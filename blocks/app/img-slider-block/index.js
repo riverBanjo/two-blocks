@@ -1,22 +1,22 @@
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+// import React from "react";
+// import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
-// import "../../node_modules/swiper/swiper.min.css";
-// import "../../node_modules/swiper/components/pagination/pagination.min.css"
-// import "../../node_modules/swiper/components/navigation/navigation.min.css"
+// Import Swiper styles;
+// import 'swiper/css';
 
-import "./styles.scss";
+// import "./styles.scss";
 
 
 
 // import Swiper core and required modules
-import SwiperCore, {
-  Pagination,Navigation
-} from 'swiper/core';
+// import SwiperCore, {
+//   Pagination,Navigation
+// } from 'swiper/core';
+import { useState } from 'react';
 
 // install Swiper modules
-SwiperCore.use([Pagination,Navigation]);
+// SwiperCore.use([Pagination,Navigation]);
 
 
 const { registerBlockType }     = wp.blocks;
@@ -36,7 +36,8 @@ registerBlockType( 'two-blocks/image-slider', {
     category:           'design',
     icon:               'images-alt2',
     edit:               ( props ) => {
-        console.log( props );
+        const [ term, setTerm ] = useState('nature');
+        const [ selection, setSelection ] = useState('3');
         return [
             <InspectorControls>
                 <PanelBody title={ __( 'Basics', 'two-blocks' ) }>
@@ -46,15 +47,15 @@ registerBlockType( 'two-blocks/image-slider', {
                     <TextControl
                         label={ __( 'Search Term', 'two-blocks' ) }
                         help={ __( 'This will be the term that will determine what your images are.', 'two-blocks' ) }
-                        value="test"
+                        value={term}
                         onChange={ ( new_val ) => {
-                            console.log( new_val );
+                            setTerm(new_val);
                         }}
                     />
                     <SelectControl
                         label={ __( 'Image Quantity', 'two-blocks' ) }
                         help ={ __( 'This is the amount of images that you want in your slider.', 'two-blocks' ) }
-                        value='3'
+                        value={selection}
                         options={ [ 
                             { label: '3', value: '3' },
                             { label: '4', value: '4' },
@@ -62,32 +63,15 @@ registerBlockType( 'two-blocks/image-slider', {
                             { label: '6', value: '6' }
                         ] }
                         onChange={ ( new_val ) => {
-                            console.log( new_val );
-                        }}
+                            setSelection(new_val);
+                        } }
                     />
                 </PanelBody>
             </InspectorControls>,
             <div className={ props.className }>
-                <Swiper 
-                    slidesPerView={1} 
-                    spaceBetween={30} 
-                    loop={true} 
-                    pagination={{
-                        "clickable": true
-                    }} 
-                    navigation={true} 
-                    className="mySwiper"
-                >
-                    <SwiperSlide>Slide 1</SwiperSlide>
-                    <SwiperSlide>Slide 2</SwiperSlide>
-                    <SwiperSlide>Slide 3</SwiperSlide>
-                    <SwiperSlide>Slide 4</SwiperSlide>
-                    <SwiperSlide>Slide 5</SwiperSlide>
-                    <SwiperSlide>Slide 6</SwiperSlide>
-                    <SwiperSlide>Slide 7</SwiperSlide>
-                    <SwiperSlide>Slide 8</SwiperSlide>
-                    <SwiperSlide>Slide 9</SwiperSlide>
-                </Swiper>
+                {
+                    [1,2,3].map( x => <img src={`https://source.unsplash.com/1600x900/?sig=${x}&${term}`} key={x}/>)
+                }
             </div>
         ];
     },

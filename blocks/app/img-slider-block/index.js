@@ -36,8 +36,12 @@ registerBlockType( 'two-blocks/image-slider', {
     category:           'design',
     icon:               'images-alt2',
     edit:               ( props ) => {
-        const [ term, setTerm ] = useState('nature');
+        const [ term, setTerm ] = useState('');
         const [ selection, setSelection ] = useState('3');
+        const sigIDs = [];
+        for( let i = 1; i <= selection; i++){
+            sigIDs[i] = i;
+        }
         return [
             <InspectorControls>
                 <PanelBody title={ __( 'Basics', 'two-blocks' ) }>
@@ -70,7 +74,7 @@ registerBlockType( 'two-blocks/image-slider', {
             </InspectorControls>,
             <div className={ props.className }>
                 {
-                    [1,2,3].map( x => <img src={`https://source.unsplash.com/1600x900/?sig=${x}&${term}`} key={x}/>)
+                    sigIDs.map( sigID => <img src={`https://source.unsplash.com/1600x900/?sig=${sigID}&${term}`} key={sigID}/>)
                 }
             </div>
         ];

@@ -3,7 +3,7 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles;
-// import 'swiper/css';
+import 'swiper/swiper.scss';
 
 // import Swiper core and required modules
 // import SwiperCore, {

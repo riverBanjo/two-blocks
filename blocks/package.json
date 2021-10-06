@@ -21,9 +21,9 @@
     "webpack-cli": "^3.1.2"
   },
   "dependencies": {
-    "swiper": "^7.0.0",
+    "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react": "17.0.1"
+    "swiper": "^6.0.0"
   },
   "version": "1.0.0",
   "license": "MIT"

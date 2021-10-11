@@ -29,9 +29,11 @@ module.exports          =   {
                 {
                     loader: "postcss-loader",
                     options: {
-                    plugins: () => [
-                        require("autoprefixer")()
-                    ],
+                        postcssOptions:{
+                            plugins: () => [
+                                require("autoprefixer")()
+                            ]
+                        },
                     },
                 },
                 'sass-loader',

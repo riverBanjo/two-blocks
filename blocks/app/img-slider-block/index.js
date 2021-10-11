@@ -4,15 +4,17 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles;
 import 'swiper/swiper.scss';
+import 'swiper/swiper-bundle.min.css'
+import 'swiper/swiper.min.css'
 
 // import Swiper core and required modules
-// import SwiperCore, {
-//   Pagination,Navigation
-// } from 'swiper/core';
+import SwiperCore, {
+  Pagination,Navigation
+} from 'swiper/core';
 import { useState } from 'react';
 
 // install Swiper modules
-// SwiperCore.use([Pagination,Navigation]);
+SwiperCore.use([Pagination,Navigation]);
 
 
 const { registerBlockType }     = wp.blocks;
@@ -69,9 +71,13 @@ registerBlockType( 'two-blocks/image-slider', {
                 </PanelBody>
             </InspectorControls>,
             <div className={ props.className }>
-                {
-                    sigIDs.map( sigID => <img src={`https://source.unsplash.com/1600x900/?sig=${sigID}&${term}`} key={sigID}/>)
-                }
+                <Swiper slidesPerView={1} spaceBetween={30} loop={true} pagination={{
+                    "clickable": true
+                }} navigation={true} className="mySwiper">
+                    {
+                        sigIDs.map( sigID => <SwiperSlide><img src={`https://source.unsplash.com/1600x900/?sig=${sigID}&${term}`} key={sigID}/></SwiperSlide>    )
+                    }
+                </Swiper>
             </div>
         ];
     },

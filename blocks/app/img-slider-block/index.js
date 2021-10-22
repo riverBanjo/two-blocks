@@ -33,6 +33,9 @@ registerBlockType( 'two-blocks/image-slider', {
     ),
     category:           'design',
     icon:               'images-alt2',
+    urls:   {
+        
+    },
     edit:               ( props ) => {
         const [ term, setTerm ] = useState('');
         const [ selection, setSelection ] = useState('3');

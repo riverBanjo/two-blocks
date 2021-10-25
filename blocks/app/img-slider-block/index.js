@@ -35,8 +35,8 @@ registerBlockType( 'two-blocks/image-slider', {
     icon:               'images-alt2',
     attributes: {
         count:   {
-            type: 'string',
-            default: '4'
+            type: 'number',
+            default: 4
         },
         term:   {
             type: 'string',
@@ -45,14 +45,12 @@ registerBlockType( 'two-blocks/image-slider', {
     }, 
     
     edit:               ( props ) => {
-        const sigIDs = [];
         const {
             attributes: { count, term },
             setAttributes,
         } = props;
-        for( let i = 1; i <= count; i++){
-            sigIDs[i] = i;
-        }
+        const sigIDs = Array.from( Array(count).keys() );
+
         return [
             <InspectorControls>
                 <PanelBody title={ __( 'Basics', 'two-blocks' ) }>
@@ -72,13 +70,13 @@ registerBlockType( 'two-blocks/image-slider', {
                         help ={ __( 'This is the amount of images that you want in your slider.', 'two-blocks' ) }
                         value={count}
                         options={ [ 
-                            { label: '3', value: '3' },
-                            { label: '4', value: '4' },
-                            { label: '5', value: '5' },
-                            { label: '6', value: '6' }
+                            { label: '3', value: 3 },
+                            { label: '4', value: 4 },
+                            { label: '5', value: 5 },
+                            { label: '6', value: 6 }
                         ] }
                         onChange={ ( new_val ) => {
-                            setAttributes( { count: new_val } );
+                            setAttributes( { count: Number( new_val ) } );
                         } }
                     />
                 </PanelBody>

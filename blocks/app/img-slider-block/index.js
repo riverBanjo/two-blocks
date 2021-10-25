@@ -33,14 +33,24 @@ registerBlockType( 'two-blocks/image-slider', {
     ),
     category:           'design',
     icon:               'images-alt2',
-    urls:   {
-        
-    },
+    attributes: {
+        count:   {
+            type: 'string',
+            default: '4'
+        },
+        term:   {
+            type: 'string',
+            default: 'clown'
+        },
+    }, 
+    
     edit:               ( props ) => {
-        const [ term, setTerm ] = useState('');
-        const [ selection, setSelection ] = useState('3');
         const sigIDs = [];
-        for( let i = 1; i <= selection; i++){
+        const {
+            attributes: { count, term },
+            setAttributes,
+        } = props;
+        for( let i = 1; i <= count; i++){
             sigIDs[i] = i;
         }
         return [
@@ -54,13 +64,13 @@ registerBlockType( 'two-blocks/image-slider', {
                         help={ __( 'This will be the term that will determine what your images are.', 'two-blocks' ) }
                         value={term}
                         onChange={ ( new_val ) => {
-                            setTerm(new_val);
+                            setAttributes( { term: new_val } );
                         }}
                     />
                     <SelectControl
                         label={ __( 'Image Quantity', 'two-blocks' ) }
                         help ={ __( 'This is the amount of images that you want in your slider.', 'two-blocks' ) }
-                        value={selection}
+                        value={count}
                         options={ [ 
                             { label: '3', value: '3' },
                             { label: '4', value: '4' },
@@ -68,7 +78,7 @@ registerBlockType( 'two-blocks/image-slider', {
                             { label: '6', value: '6' }
                         ] }
                         onChange={ ( new_val ) => {
-                            setSelection(new_val);
+                            setAttributes( { count: new_val } );
                         } }
                     />
                 </PanelBody>

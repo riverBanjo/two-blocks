@@ -74,6 +74,14 @@ registerBlockType( 'two-blocks/image-slider', {
         ];
     },
     save:               ( props ) => {
-        return <p>Hello World!</p>
+        const {
+            attributes: { count, term },
+        } = props;
+        const sigIDs = Array.from( Array(count).keys() );
+        return [
+            <div className={ props.className }>
+                { rcf_render_slider(sigIDs, term) }
+            </div>
+        ];
     }
 });

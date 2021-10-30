@@ -11,7 +11,6 @@ import 'swiper/swiper.min.css'
 import SwiperCore, {
   Pagination,Navigation
 } from 'swiper/core';
-import { useState } from 'react';
 
 // install Swiper modules
 SwiperCore.use([Pagination,Navigation]);

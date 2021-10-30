@@ -1,20 +1,8 @@
 // Import Swiper React components
 import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles;
-import 'swiper/swiper.scss';
-import 'swiper/swiper-bundle.min.css'
-import 'swiper/swiper.min.css'
-
-// import Swiper core and required modules
-import SwiperCore, {
-  Pagination,Navigation
-} from 'swiper/core';
-
-// install Swiper modules
-SwiperCore.use([Pagination,Navigation]);
-
+// import swiper render function
+import { rcf_render_slider } from './sliderRender.js';
 
 const { registerBlockType }     = wp.blocks;
 const { __ }                    = wp.i18n;
@@ -81,13 +69,7 @@ registerBlockType( 'two-blocks/image-slider', {
                 </PanelBody>
             </InspectorControls>,
             <div className={ props.className }>
-                <Swiper slidesPerView={1} spaceBetween={30} loop={true} pagination={{
-                    "clickable": true
-                }} navigation={true} className="mySwiper">
-                    {
-                        sigIDs.map( sigID => <SwiperSlide><img src={`https://source.unsplash.com/1600x900/?sig=${sigID}&${term}`} key={sigID}/></SwiperSlide>    )
-                    }
-                </Swiper>
+                { rcf_render_slider(sigIDs, term) }
             </div>
         ];
     },

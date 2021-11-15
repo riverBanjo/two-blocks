@@ -16,3 +16,11 @@ function rcf_enqueue_block_editor_assets () {
     );
     wp_enqueue_script( 'rcf_blocks_bundle' );
 }
+
+function rcf_enqueue_block_assets () {
+    wp_register_script(
+        'rcf_get_posts',
+        plugins_url( '/blocks/app/API-post-list/getPosts.js', TWO_BLOCKS_PLUGIN_URL ), [ 'jquery' ], false, true
+    );
+    wp_enqueue_script( 'rcf_get_posts' );
+}

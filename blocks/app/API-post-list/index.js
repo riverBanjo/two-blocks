@@ -50,13 +50,17 @@ registerBlockType( 'two-blocks/api-post-list', {
                 </PanelBody>
             </InspectorControls>,
             <div className={ props.className }>
-                <button class="button">Get Posts</button>
+                <button id="rcf-get-posts" class="button">Get Posts</button>
             </div>
         ];
     },
     save:               ( props ) => {
-        return [
-            <button class="button">Get Posts</button>
-        ];
+        return (
+            <div className={ props.className }>
+                <ul id="rcf-post-list">
+                </ul>
+                <button id="rcf-get-posts" class="button">Get Posts</button>
+            </div>
+        );
     }
 });

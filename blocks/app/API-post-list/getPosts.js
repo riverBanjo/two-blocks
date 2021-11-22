@@ -1,6 +1,7 @@
 jQuery('#rcf-get-posts').on('click', () => {
+    let postNum = jQuery('#rcf-get-posts').attr( 'post-number' );
     jQuery.ajax({
-        url: "/wp-json/wp/v2/posts/"
+        url: "/wp-json/wp/v2/posts/?per_page=" + postNum
     })
     .done(function( post_data ) {
         post_data.forEach( post => {

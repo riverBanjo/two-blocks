@@ -59,7 +59,7 @@ registerBlockType( 'two-blocks/api-post-list', {
             <div className={ props.className }>
                 <ul id="rcf-post-list">
                 </ul>
-                <button id="rcf-get-posts" class="button">Get Posts</button>
+                <button id="rcf-get-posts" class="button" post-number={props.attributes.count.toString()}>Get Posts</button>`
             </div>
         );
     }

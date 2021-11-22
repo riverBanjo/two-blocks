@@ -3,8 +3,14 @@ jQuery('#rcf-get-posts').on('click', () => {
         url: "/wp-json/wp/v2/posts/"
     })
     .done(function( post_data ) {
-        post_data.forEach( post => console.log(post.title.rendered));
-        post_data.forEach( post => jQuery('#rcf-post-list').append(addElement('li', post.title.rendered)));
+        post_data.forEach( post => {
+            let title = addElement('h4', post.title.rendered);
+            let excerpt = post.excerpt.rendered;
+            let liElement = document.createElement('li');
+            liElement.appendChild(title);
+            jQuery(excerpt).appendTo( liElement );
+            jQuery('#rcf-post-list').append(liElement);
+        });
     });
 })
 

@@ -16,13 +16,4 @@ Suggested library: https://swiperjs.com
 Overview: Build a block with a button when pressed displays a list of posts on the page.
 Settings
 - 1 select field for number of posts they want: “3, 4, 5, 6”
-Expectations: A “load posts” button that displays a list of posts with their ‘title’ & ‘body’.
-Note: this block should be rendered in JS (React)
-Suggested library: https://jsonplaceholder.typicode.com/
-
-
-## Notes:
-- Please make a public github repo for this so we can easily see your code.
-- These blocks don’t have to win any design awards but please do some basic styling just to show us you know how.  
-- Feel free to use anything that helps you scaffold some of the more tedious parts of WP plugin development.
-- Deadline: early next week if possible
+Expectations: A “load posts” button that displays a list of posts with their ‘title’ & ‘excerpt'
